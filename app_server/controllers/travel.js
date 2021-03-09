@@ -2,7 +2,7 @@
 
 
 const travel = (req, res) => {
-    pageTitle = process.env.npm_package_author + ' - Travel';
+    pageTitle = process.env.npm_package_name + ' - Travel';
 
     res.render('travel', {title: pageTitle});
 
