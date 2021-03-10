@@ -6,7 +6,7 @@ const travel = (req, res) => {
 
     res.render('travel', {title: pageTitle});
 
-    console.log(pageTitle);
+
 
 
 };
