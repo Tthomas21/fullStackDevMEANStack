@@ -1,6 +1,4 @@
-
-
-
+/ * Main page * /
 
 const index = (req, res) => {
     pageTitle = process.env.npm_package_description + ' - Home';
@@ -11,4 +9,4 @@ const index = (req, res) => {
 
 module.exports = {
     index
-}
+};
