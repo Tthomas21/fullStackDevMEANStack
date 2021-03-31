@@ -1,4 +1,4 @@
-/ * Get Travel View */
+
 const request = require('request');
 const apiOptions = {
  server: 'http://localhost:3000'
