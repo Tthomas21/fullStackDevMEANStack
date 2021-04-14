@@ -5,8 +5,6 @@ import { Trip } from '../models/trip';
 
 
 @Injectable()
-
-
 export class TripDataService {
 
   constructor(private http: Http) { }

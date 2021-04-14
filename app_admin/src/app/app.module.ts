@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import {ReactiveFormsModule } from "@angular/forms";
+import {ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-router.module';
@@ -21,9 +22,11 @@ import { EditTripComponent } from './edit-trip/edit-trip.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     HttpModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     TripDataService

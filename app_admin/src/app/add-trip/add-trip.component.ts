@@ -14,25 +14,32 @@ import { TripDataService } from '../services/trip-data.service';
 export class AddTripComponent implements OnInit {
   addForm: FormGroup;
   submitted = false;
+
+  
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private tripService: TripDataService
     ) { }
     
-    ngOnInit() {
-      this.addForm = this.formBuilder.group({
-        _id: [],
-        code: ['', Validators.required],
-        name: ['', Validators.required],
-        length: ['', Validators.required],
-        start: ['', Validators.required],
-        resort: ['', Validators.required],
-        perPerson: ['', Validators.required],
-        image: ['', Validators.required],
-        description: ['', Validators.required],
-      })
+  ngOnInit() {
+    this.addForm = this.formBuilder.group({
+      _id: [],
+      code: ['', Validators.required],
+      name: ['', Validators.required],
+      length: ['', Validators.required],
+      start: ['', Validators.required],
+      resort: ['', Validators.required],
+      perPerson: ['', Validators.required],
+      image: ['', Validators.required],
+      description: ['', Validators.required],
+
+    })
+
     }
+
+
+
     onSubmit() {
       this.submitted = true;
       if(this.addForm.valid){
