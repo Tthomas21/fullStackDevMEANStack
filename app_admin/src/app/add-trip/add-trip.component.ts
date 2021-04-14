@@ -33,10 +33,8 @@ export class AddTripComponent implements OnInit {
       perPerson: ['', Validators.required],
       image: ['', Validators.required],
       description: ['', Validators.required],
-
     })
-
-    }
+  }
 
 
 
