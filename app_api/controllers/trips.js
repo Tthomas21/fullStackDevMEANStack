@@ -53,8 +53,7 @@ const tripsFindByCode = async(req, res) => {
         });
 };
 
-const tripsAddTrip = async(req, res) => {
-    console.log('tripsAddTrip invoked with:\n' + req.body);
+const tripsAddTrip = async (req, res) => {
     getUser(req, res,
         (req, res) => {
             Trip
@@ -79,11 +78,14 @@ const tripsAddTrip = async(req, res) => {
                     .json(trip);
                 }
             });
-          }
-        )
-};
+        }
+    );
+}
 
-const tripsUpdateTrip = async (req, res) => {
+
+
+const tripsUpdateTrip = async(req, res) => {
+    console.log(req.body);
     getUser(req, res,
         (req, res) => {
             Trip
@@ -124,28 +126,28 @@ const tripsUpdateTrip = async (req, res) => {
 
 
 const getUser = (req, res, callback) => {
-    if (req.payload && req.payload.email) {        
+    if (req.payLoad && req.payLoad.email) {      
       User
-        .findOne({ email : req.payload.email })         
-        .exec((err, user) => {
+      .findOne({ email : req.payLoad.email })
+      .exec((err, user) => {
           if (!user) {
-            return res
+              return res
               .status(404)
               .json({"message": "User not found"});
-          } else if (err) {
-            console.log(err);
-            return res
-              .status(404)
-              .json(err);
-           }
-          callback(req, res, user.name);                
-         });
+            } else if (err) {
+                console.log(err);
+                return res
+                .status(404)
+                .json(err);
+            }
+            callback(req, res, user.name);
+        });
     } else {
-      return res
+        return res
         .status(404)
         .json({"message": "User not found"});
     }
-  };
+};
     
 
 module.exports = {

@@ -1,10 +1,14 @@
 var express = require('express');
 var router = express.Router();
 const jwt = require('express-jwt');
+
+
+
 const auth = jwt({
     secret: process.env.JWT_SECRET,
+    algorithms: ['sha1', 'RS256', 'HS256'],
     userProperty: 'payLoad',
-    algorithms: ['sha512']
+    token: 'getTokenFromBrowser'
 });
 
 const tripsController = require('../controllers/trips');

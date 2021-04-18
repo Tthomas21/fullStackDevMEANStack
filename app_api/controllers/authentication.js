@@ -13,26 +13,22 @@ const register = (req, res) => {
      .json({"message": "All fields required"});
     
     }
-
-    
-const user = new User();
-user.name = req.body.name;
-user.email = req.body.email;
-
-
-user.setPassword(req.body.password);
-user.save((err) => {
-    if (err) {
-        res
-        .status(400)
-        .json(err);
-    } else {
-        const token = user.generateJwt();
-        res
-        .status(200)
-        .json({token});
-    }
-})
+    const user = new User();
+    user.name = req.body.name;
+    user.email = req.body.email;
+    user.setPassword(req.body.password);
+    user.save((err) => {
+        if (err) {
+            res
+            .status(400)
+            .json(err);
+        } else {
+            const token = user.generateJwt();
+            res
+            .status(200)
+            .json({token});
+        }
+    })
 };
 
 
