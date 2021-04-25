@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, RequestOptions, RequestOptionsArgs, Headers } from '@angular/http';
 
 import { Trip } from '../models/trip';
 import { User } from '../models/user';
@@ -19,8 +19,11 @@ export class TripDataService {
 
   public addTrip(formData: Trip): Promise<Trip> {
     console.log('Inside TripDataService#addTrip');
+    const httpOptions = new Headers();
+    httpOptions.append('Authorization', `Bearer ${this.storage.getItem('travlr-token')}`);
+    const requestOptions: RequestOptionsArgs = { headers: httpOptions, };
     return this.http
-      .post(this.tripUrl, formData) // pass form data in request body
+      .post(this.tripUrl, formData, requestOptions) // pass form data in request body
       .toPromise()
       .then(response => response.json() as Trip[])
       .catch(this.handleError);
@@ -47,8 +50,12 @@ export class TripDataService {
   public updateTrip(formData: Trip): Promise<Trip> {
     console.log('Inside TripDataService#upateTrip');
     console.log(formData);
+    //console.log(this.tripUrl + formData.code);
+    const httpOptions = new Headers();
+    httpOptions.append('Authorization', `Bearer ${this.storage.getItem('travlr-token')}`);
+    const requestOptions: RequestOptionsArgs = { headers: httpOptions, };
     return this.http
-      .put(this.tripUrl + formData.code, formData)
+      .put(this.tripUrl + formData.code, formData, requestOptions)
       .toPromise()
       .then(response => response.json() as Trip[])
       .catch(this.handleError);

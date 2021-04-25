@@ -53,7 +53,7 @@ const tripsFindByCode = async(req, res) => {
         });
 };
 
-const tripsAddTrip = async (req, res) => {
+const tripsAddTrip = async(req, res) => {
     getUser(req, res,
         (req, res) => {
             Trip
